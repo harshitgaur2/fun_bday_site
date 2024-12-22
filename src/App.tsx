@@ -1,9 +1,11 @@
 import React from 'react';
-import { MapPin, Gift, Video, Heart } from 'lucide-react';
+import { MapPin, Gift, Heart } from 'lucide-react';
 import Banner from './components/Banner';
 import Gallery from './components/Gallery';
 import Quotes from './components/Quotes';
-
+import ReactPlayer from 'react-player';
+// Path to the locally stored video in the public folder
+const videoId = 'https://idoxbno.sufydely.com/v2.mp4'; // Make sure this is the correct relative path from the public folder
 
 function App() {
   return (
@@ -16,11 +18,25 @@ function App() {
       <section className="py-20 px-4 bg-purple-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-purple-700 mb-8 flex items-center justify-center gap-2">
-            <Video className="w-8 h-8" />
-            Last Year's Highlights
+            Watch Our Special Video
           </h2>
-          <div className="aspect-video rounded-lg shadow-lg overflow-hidden bg-black">
-          <iframe src="https://player.vimeo.com/video/1041424070?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" width="720" height="1280" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" title="v2"></iframe>
+
+          {/* ReactPlayer Component */}
+          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+            <ReactPlayer
+              url={videoId}
+              playing={false}       // Controls autoplay; set to true if you want autoplay
+              controls={true}       // Enables controls for play/pause, etc.
+              width="100%"          // Makes the player responsive
+              height="100%"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+              }}
+            />
           </div>
         </div>
       </section>
@@ -34,8 +50,15 @@ function App() {
           </h2>
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
             <h3 className="text-xl font-semibold text-pink-600 mb-4">Plum Coffee and Cocktails</h3>
-            <p className="text-gray-700 mb-4">1st Floor, N Block, 86, Connaught Cir, Block N, Connaught Place N Block, 86, Connaught Cir, Connaught Place, New Delhi, Delhi 110001</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.990300530489!2d77.2196259!3d28.630052799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd36c4e4bfc1%3A0x91d67afdbab09470!2sPlum%20Coffee%20and%20Cocktails!5e0!3m2!1sen!2sin!4v1734814947289!5m2!1sen!2sin" width="600" height="450" loading="lazy"></iframe>
+            <p className="text-gray-700 mb-4">
+              1st Floor, N Block, 86, Connaught Cir, Block N, Connaught Place N Block, 86, Connaught Cir, Connaught Place, New Delhi, Delhi 110001
+            </p>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.990300530489!2d77.2196259!3d28.630052799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd36c4e4bfc1%3A0x91d67afdbab09470!2sPlum%20Coffee%20and%20Cocktails!5e0!3m2!1sen!2sin!4v1734814947289!5m2!1sen!2sin"
+              width="600"
+              height="450"
+              loading="lazy"
+            ></iframe>
           </div>
         </div>
       </section>
